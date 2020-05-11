@@ -1,4 +1,6 @@
 # lifecycle-components
+Session recording: https://web.microsoftstream.com/video/a8c73f69-c380-4245-960c-644b04886307
+
 Working Group project
 
 Presenters are lifecycle observer, which means they can receive lifecycle events the same way as Activity/Fragment/Dialog and
