@@ -1,4 +1,4 @@
-package lifecycle.example.fragmentfromonclick
+package lifecycle.example.next
 
 import android.content.Context
 import android.os.Bundle
@@ -9,15 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.navigation.fragment.findNavController
-import kotlinx.android.synthetic.main.fragment_second.*
+import dagger.android.support.DaggerFragment
+import kotlinx.android.synthetic.main.fragment_next.*
 import lifecycle.example.R
-import lifecycle.example.dialog.Dialog
-import lifecycle.example.fragmentfromxml.PresenterAttachedFromXml
+import lifecycle.example.dialog.DialogFragment
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class FragmentAttachedOnClick : Fragment() {
+class NextFragment : DaggerFragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -29,9 +29,9 @@ class FragmentAttachedOnClick : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        lifecycle.addObserver(PresenterAttachedOnClick())
+        lifecycle.addObserver(NextPresenter())
         Log.i("Lifecycle Test", "Lifecycle Test FragmentAttachedOnClick onCreateView")
-        return inflater.inflate(R.layout.fragment_second, container, false)
+        return inflater.inflate(R.layout.fragment_next, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -41,7 +41,7 @@ class FragmentAttachedOnClick : Fragment() {
             findNavController().navigate(R.id.action_SecondFragment_to_FirstFragment)
         }
         dialog.setOnClickListener {
-            Dialog().show(fragmentManager!!, "DialogTag")
+            DialogFragment().show(fragmentManager!!, "DialogTag")
         }
         Log.i("Lifecycle Test", "Lifecycle Test FragmentAttachedOnClick onViewCreated")
     }

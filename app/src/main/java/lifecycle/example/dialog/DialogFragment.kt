@@ -7,14 +7,19 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.DialogFragment
+import dagger.android.support.DaggerDialogFragment
 import kotlinx.android.synthetic.main.dialog.*
 import lifecycle.example.R
+import javax.inject.Inject
 
-class Dialog : DialogFragment() {
+
+class DialogFragment : DaggerDialogFragment() {
+
+    @Inject
+    lateinit var dialogPresenter: DialogPresenter
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        lifecycle.addObserver(DialogPresenter())
+        lifecycle.addObserver(dialogPresenter)
         Log.i("Lifecycle Test", "Lifecycle Test Dialog onCreateDialog")
         return super.onCreateDialog(savedInstanceState)
     }
@@ -25,7 +30,14 @@ class Dialog : DialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         Log.i("Lifecycle Test", "Lifecycle Test Dialog onCreateView")
-        return inflater.inflate(R.layout.dialog, container, false)
+        val dialog = dialog
+        dialog?.window?.setLayout(500, 800)
+        return layoutInflater.inflate(R.layout.dialog, container, true)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        Log.i("Lifecycle Test", "Lifecycle Test Dialog onViewCreated")
     }
 
     override fun onResume() {

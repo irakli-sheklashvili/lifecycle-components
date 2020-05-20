@@ -1,21 +1,24 @@
-package lifecycle.example.activity
+package lifecycle.example.home
 
 import android.os.Bundle
 import android.util.Log
 import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import dagger.android.support.DaggerAppCompatActivity
 
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_home.*
 import lifecycle.example.R
+import javax.inject.Inject
 
-class MainActivity : AppCompatActivity() {
+class HomeActivity : DaggerAppCompatActivity(), HomeView {
+
+    @Inject
+    lateinit var homePresenter: HomePresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        lifecycle.addObserver(ActivityPresenter())
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_home)
         setSupportActionBar(toolbar)
 
         fab.setOnClickListener { view ->

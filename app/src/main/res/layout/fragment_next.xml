@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF0000"
-    tools:context=".fragmentfromonclick.FragmentAttachedOnClick">
+    android:background="#FFBBBB"
+    tools:context=".next.NextFragment">
 
     <TextView
         android:id="@+id/textview_second"

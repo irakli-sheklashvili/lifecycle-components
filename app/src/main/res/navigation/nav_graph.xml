@@ -7,19 +7,21 @@
 
     <fragment
         android:id="@+id/FirstFragment"
-        android:name="lifecycle.example.fragmentfromxml.FragmentAttachedFromXml"
+        android:name="lifecycle.example.hello.HelloFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_first">
+        tools:layout="@layout/fragment_hello">
 
         <action
             android:id="@+id/action_FirstFragment_to_SecondFragment"
             app:destination="@id/SecondFragment" />
+       <!-- app:popUpTo="@id/FirstFragment"
+        app:popUpToInclusive="true"/-->
     </fragment>
     <fragment
         android:id="@+id/SecondFragment"
-        android:name="lifecycle.example.fragmentfromonclick.FragmentAttachedOnClick"
+        android:name="lifecycle.example.next.NextFragment"
         android:label="@string/second_fragment_label"
-        tools:layout="@layout/fragment_second">
+        tools:layout="@layout/fragment_next">
 
         <action
             android:id="@+id/action_SecondFragment_to_FirstFragment"

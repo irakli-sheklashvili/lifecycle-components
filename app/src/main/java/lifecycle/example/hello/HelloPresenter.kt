@@ -1,11 +1,14 @@
-package lifecycle.example.fragmentfromxml
+package lifecycle.example.hello
 
+import android.os.AsyncTask
+import android.os.Handler
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 
-class PresenterAttachedFromXml : LifecycleObserver {
+
+class HelloPresenter(private var helloView: HelloView?) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
@@ -29,11 +32,22 @@ class PresenterAttachedFromXml : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_STOP)
     fun onStop() {
+        helloView = null
         Log.i("Lifecycle Test", "Lifecycle Test PresenterAttachedFromXml onStop")
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
     fun onDestroy() {
         Log.i("Lifecycle Test", "Lifecycle Test PresenterAttachedFromXml onDestroy")
+    }
+
+    fun downloadStuff() {
+        val handler = Handler()
+        Thread {
+            Thread.sleep(10000)
+            handler.post {
+                helloView?.onDownloadFinish()
+            }
+        }.start()
     }
 }

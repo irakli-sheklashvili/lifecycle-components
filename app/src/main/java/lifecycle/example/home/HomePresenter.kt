@@ -1,11 +1,11 @@
-package lifecycle.example.activity
+package lifecycle.example.home
 
 import android.util.Log
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 
-class ActivityPresenter : LifecycleObserver {
+class HomePresenter(private val homeView: HomeView?) : LifecycleObserver {
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
