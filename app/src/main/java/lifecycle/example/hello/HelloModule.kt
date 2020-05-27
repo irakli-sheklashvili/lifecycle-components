@@ -3,7 +3,7 @@ package lifecycle.example.hello
 import androidx.lifecycle.Lifecycle
 import dagger.Module
 import dagger.Provides
-import lifecycle.example.home.HomeActivity
+
 
 @Module
 class HelloModule {

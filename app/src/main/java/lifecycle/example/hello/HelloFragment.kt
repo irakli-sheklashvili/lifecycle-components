@@ -45,7 +45,7 @@ class HelloFragment : DaggerFragment(), HelloView {
         Log.i("Lifecycle Test", "Lifecycle Test FragmentAttachedFromXml onViewCreated")
 
         download_button.setOnClickListener {
-            presenter.downloadStuff();
+            presenter.downloadStuff()
         }
     }
 

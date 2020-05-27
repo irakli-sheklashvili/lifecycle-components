@@ -1,6 +1,5 @@
 package lifecycle.example.hello
 
-import android.os.AsyncTask
 import android.os.Handler
 import android.util.Log
 import androidx.lifecycle.Lifecycle
